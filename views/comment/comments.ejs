@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>For main page blog summary details form</h1>
+    <h1>For detail blog page form</h1>
+
+    <form action="/add-comment" method="POST">
+        <div class="mb-3">
+            <label for="srNo" class="form-label">SrNo</label>
+            <input type="number" name="srNo" class="form-control" placeholder="Serial Number" id="srNo">
+        </div>
+        <div class="mb-3">
+            <label for="comment" class="form-label">Enter Comment</label>
+            <textarea class="form-control is-invalid" id="validationTextarea" name="comment"
+                placeholder="Write your comment" required></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="user" class="form-label">User Name</label>
+            <input type="text" name="user" placeholder="User Name" class="form-control" id="user">
+        </div>
+        <div class="mb-3">
+            <label for="blog" class="form-label">Blog Name</label>
+            <input type="text" name="blog" placeholder="Blog Name" class="form-control" id="blog">
+        </div>
+        <div class="mb-3">
+            <label for="parent" class="form-label">Parent Comment Detail</label>
+            <input type="text" name="parent" placeholder="Parent Comment Detail" class="form-control" id="parent">
+        </div>
+        <div class="row">
+            <button class="btn btn-primary" type="submit">Submit</button>
+        </div>
+    </form>
+
+    <h1>comments details Table</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Sr No</th>
+                <th scope="col">Comment</th>
+                <th scope="col">User </th>
+                <th scope="col">Blog</th>
+                <th scope="col">Parent</th>
+                <th scope="col">Date Commented</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for data in datas %}
+            <tr>
+                <td>{{ data.srNo }}</td>
+                <td>{{ data.comment }}</td>
+                <td>{{ data.user }}</td>
+                <td>{{ data.blog }}</td>
+                <td>{{ data.parent }}</td>
+                <td>{{ data.time }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<%- include('../main/header.ejs') %>
+<!-- {% block body %} -->
+<div class="container">
+  <h1 style="text-align: center;">To Do App</h1>
+  <form action="/add-list" method="POST" >
+    <div class="mb-3">
+      <label for="title" class="form-label">New Item</label>
+      <input type="text" name="title" value = "" class="form-control" id="newItem" placeholder = "Please Enter New List Item">
+    </div>
+    <button type="submit" class="btn btn-primary">Add</button>
+  </form>
+  <div class="my-3">
+    <form action="/update-delete-list" method="POST">
+      <ul class="list-group mb-3">
+        <% datas.forEach(data => { %>
+
+        <li class="list-group-item">
+          <input type="checkbox" id="{{ data._id.$oid }}">
+          <label for="" class="list-checkbox"><%= data.title %></label>
+          <!-- <span class="checkmark"></span> -->
+        </li>
+
+        <% }); %>
+
+      </ul>
+      <button type="submit" name="button" value="update" class="btn btn-primary">Update</button>
+      <button type="submit" name="button" value="delete" class="btn btn-primary">Delete</button>
+    </form>
+  </div>
+</div>
+<!-- {% endblock %} -->
